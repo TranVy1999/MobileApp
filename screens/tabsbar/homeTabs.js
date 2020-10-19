@@ -5,14 +5,14 @@ import 'antd-mobile/dist/antd-mobile.css'
 
 export default class HomeTabs extends Component{
     state = {
-        data: ['1', '2', '3'],
+        data: ['1', '2', '3','4'],
         imgHeight: 176,
         }
         componentDidMount() {
         // simulate img loading
         setTimeout(() => {
             this.setState({
-            data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
+            data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI','IJOtIlfsYdTyaDTRVrLI'],
             });
         }, 100);
         }

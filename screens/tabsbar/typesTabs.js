@@ -2,11 +2,13 @@ import React, {Component} from 'react';
 import { Text, View } from 'react-native';
 import 'antd-mobile/dist/antd-mobile.css'
 import { Tabs, WhiteSpace } from 'antd-mobile';
-
+import Genre from ''
 const tabs = [
-    { title: 'First Tab' },
-    { title: 'Second Tab' },
-    { title: 'Third Tab' },
+    { title: ' HOTTEST ' },
+    { title: ' UPDATE ' },
+    { title: ' ACTION ' },
+    { title: ' FANTASY ' },
+    { title: ' HORROR ' },
 ];
 
 export default class TypesTabs extends Component{
@@ -33,6 +35,13 @@ export default class TypesTabs extends Component{
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '40rem', backgroundColor: '#fff' }}>
                             Content of third tab
                         </div>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '40rem', backgroundColor: '#fff' }}>
+                            Content of four tab
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '40rem', backgroundColor: '#fff' }}>
+                            Content of five tab
+                        </div>
+                      
                     </Tabs>
                 <WhiteSpace />
             </div>
