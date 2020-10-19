@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Text, View } from 'react-native';
 import 'antd-mobile/dist/antd-mobile.css'
 import { Tabs, WhiteSpace } from 'antd-mobile';
-import Genre from ''
+
 const tabs = [
     { title: ' HOTTEST ' },
     { title: ' UPDATE ' },
