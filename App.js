@@ -1,28 +1,25 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
-import Navigation from './routes/drawer';
-import Home from './screens/Home'
+import React, { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import * as Font from "expo-font";
+import { AppLoading } from "expo";
+import HomeScreen from "./screens/HomeScreen";
 
-const getFonts = () => Font.loadAsync({
-    'nutito-regular': require('./assets/fonts/NunitoSans-Regular.ttf'),
-    'nutito-bold': require('./assets/fonts/NunitoSans-Bold.ttf')
-  })
+const getFonts = () =>
+  Font.loadAsync({
+    "nutito-regular": require("./assets/fonts/NunitoSans-Regular.ttf"),
+    "nutito-bold": require("./assets/fonts/NunitoSans-Bold.ttf"),
+  });
 
-export default function App() {
+const App = () => {
   const [fontLoader, setFontLoaded] = useState(false);
 
-    if(fontLoader){
-      return (
-          <Home />
-        );
-      }else{
-        return(
-          <AppLoading 
-            startAsync={getFonts} 
-            onFinish={ () => setFontLoaded(true)}
-          />
-        )
-      }
+  if (fontLoader) {
+    return <HomeScreen />;
+  } else {
+    return (
+      <AppLoading startAsync={getFonts} onFinish={() => setFontLoaded(true)} />
+    );
   }
+};
+
+export default App;
