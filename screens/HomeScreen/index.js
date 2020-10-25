@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TabBar } from "antd-mobile";
 import { View, Dimensions } from "react-native";
-
+// import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
   faHome,
@@ -14,7 +14,7 @@ import {
 import "antd-mobile/dist/antd-mobile.css";
 import TypesTabs from "./components/TypesTabs";
 import CarouselHome from "./components/CarouselHome";
-import DiscoverTab from './components/DiscoverTabs'
+import DiscoverTab from "./components/DiscoverTabs";
 const HomeScreen = (props) => {
   const [selectedTab, setSelectedTab] = useState("homeTab");
 
@@ -54,6 +54,7 @@ const HomeScreen = (props) => {
       selected: "bookStoreTab",
       title: "Tủ sách",
       icon: faSwatchbook,
+      // children: <Spinner />,
       onPress: () => setSelectedTab("bookStoreTab"),
     },
     {

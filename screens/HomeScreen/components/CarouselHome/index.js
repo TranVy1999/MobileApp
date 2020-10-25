@@ -29,6 +29,7 @@ const CarouselHome = (props) => {
         >
           <Carousel
             autoplay={true}
+            dots={false}
             autoplayInterval={5000}
             infinite
             dotActiveStyle={{
