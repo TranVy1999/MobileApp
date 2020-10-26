@@ -51,12 +51,12 @@ state = {
             >
         
                 <img
-              
+            
                 src={`https://truyenvn.com/tin/wp-content/uploads/2020/10/${val}.jpg`}
                 alt=""
                 style={{ width: '100%', verticalAlign: 'top' }}
                 onLoad={() => {
-                  
+                
                     window.dispatchEvent(new Event('resize'));
                     this.setState({ imgHeight: 'auto' });
                 }}
@@ -68,7 +68,7 @@ state = {
                 <FlatList data ={discovers}
                         renderItem = {({item}) => <Item discovers={item} />}
                         keyExtractor = {item => `${item.id}`}
-                          />  
+                />  
         
         </WingBlank>
     );

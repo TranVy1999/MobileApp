@@ -7,14 +7,14 @@ export default function Item (props){
     const { discovers} = props
         
         return (
-          
+        
             <ListItem bottomDivider style={styles.containerItem}>
                 <Avatar style={styles.itemImage} source={{uri: discovers.imaged}} />
                 <ListItem.Content>
                 <ListItem.Title>{discovers.name}</ListItem.Title>
                 <ListItem.Subtitle>bá đạo từng hạt gạo</ListItem.Subtitle>
                 </ListItem.Content>
-               
+            
             </ListItem>
         );
     }
