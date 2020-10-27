@@ -9,8 +9,8 @@ import {
 import { ListItem, Avatar } from "react-native-elements";
 import "antd-mobile/dist/antd-mobile.css";
 
-export default function Item(props) {
-  const { discovers } = props;
+const MangaItem = (props) => {
+  const { manga } = props;
 
   return (
     <TouchableOpacity>
@@ -24,21 +24,18 @@ export default function Item(props) {
             }}
           >
             <View>
-              <Avatar
-                style={styles.itemImage}
-                source={{ uri: discovers.imaged }}
-              />
+              <Avatar style={styles.itemImage} source={{ uri: manga.image }} />
             </View>
             <View style={styles.itemContent}>
               <ListItem.Title style={styles.itemName}>
-                {discovers.name}
+                {manga?.name}
               </ListItem.Title>
               <ListItem.Subtitle>
                 <View style={styles.itemSubtitle}>
-                  <Text style={styles.contented}>
-                    {discovers.contented.length > 70
-                      ? discovers.contented.substring(0, 70 - 3) + "..."
-                      : discovers.contented}
+                  <Text style={styles.itemDescription}>
+                    {manga?.description.length > 110
+                      ? manga?.description.substring(0, 110 - 3) + "..."
+                      : manga?.description}
                   </Text>
                 </View>
               </ListItem.Subtitle>
@@ -48,7 +45,10 @@ export default function Item(props) {
       </ListItem>
     </TouchableOpacity>
   );
-}
+};
+
+export default MangaItem;
+
 const styles = StyleSheet.create({
   itemImage: {
     width: 100,
@@ -62,8 +62,9 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingLeft: 0,
   },
-  contented: {
+  itemDescription: {
     width: `calc(${Dimensions.get("window").width}px - 162px)`,
+    color: "#111",
   },
   itemContent: {
     width: `calc(${Dimensions.get("window").width}px - 162px)`,
