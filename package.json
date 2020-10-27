@@ -17,7 +17,7 @@
     "@react-native-community/masked-view": "0.1.10",
     "antd-mobile": "^2.3.4",
     "babel-plugin-import": "^1.13.1",
-    "expo": "~39.0.2",
+    "expo": "^39.0.3",
     "expo-cli": "^3.27.12",
     "expo-status-bar": "~1.0.2",
     "formik": "^2.1.5",
