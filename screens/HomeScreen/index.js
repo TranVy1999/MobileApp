@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { TabBar } from "antd-mobile";
 import { View, Dimensions } from "react-native";
-// import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
   faHome,
@@ -55,7 +54,6 @@ const HomeScreen = (props) => {
       selected: "bookStoreTab",
       title: "Tủ sách",
       icon: faSwatchbook,
-      // children: <Spinner />,
       onPress: () => setSelectedTab("bookStoreTab"),
     },
     {

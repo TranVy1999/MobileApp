@@ -1,7 +1,8 @@
 import React from "react";
 import { Tabs } from "antd-mobile";
 import { View, ScrollView, Text } from "react-native";
-import "antd-mobile/dist/antd-mobile.css";
+import MangaItem from "../../../../shares/MangaItem";
+import mangas from "../../../../manga";
 
 const TypesTabs = (props) => {
   const tabs = [
@@ -9,44 +10,55 @@ const TypesTabs = (props) => {
     { title: "Truyện Chat", sub: "2" },
   ];
 
+  const filterMangas = (tabName) => {
+    return mangas.filter((manga) => {
+      return manga?.categories?.includes(tabName);
+    });
+  };
+
   const tabList = [
-    { title: "HOT NHẤT", sub: "1", children: "ABC" },
-    { title: "MỚI NHẤT", sub: "2", children: "ABC" },
-    { title: "HÀNH ĐỘNG", sub: "3", children: "ABC" },
-    { title: "ĐÃ FULL", sub: "4", children: <span>ABCDXYZ</span> },
-    { title: "KINH DỊ", sub: "5", children: "ABC" },
-    { title: "TÌNH YÊU", sub: "6", children: "ABC" },
-    { title: "MẠO HIỂM", sub: "7", children: "ABC" },
-    { title: "TRƯỜNG HỌC", sub: "8", children: "ABC" },
-    { title: "HÀI HƯỚC", sub: "9", children: "ABC" },
-    { title: "XUYÊN KHÔNG", sub: "10", children: "ABC" },
-    { title: "VIỄN TƯỞNG", sub: "11", children: "ABC" },
-    { title: "SIÊU NĂNG LỰC", sub: "12", children: "ABC" },
-    { title: "ĐANG CẬP NHẬT", sub: "13", children: "ABC" },
+    { title: "HOT NHẤT", sub: "1", children: filterMangas("HOT NHẤT") },
+    { title: "MỚI NHẤT", sub: "2", children: filterMangas("MỚI NHẤT") },
+    { title: "HÀNH ĐỘNG", sub: "3", children: filterMangas("HÀNH ĐỘNG") },
+    { title: "ĐÃ FULL", sub: "4", children: filterMangas("ĐÃ FULL") },
+    { title: "KINH DỊ", sub: "5", children: filterMangas("KINH DỊ") },
+    { title: "TÌNH YÊU", sub: "6", children: filterMangas("TÌNH YÊU") },
+    { title: "MẠO HIỂM", sub: "7", children: filterMangas("MẠO HIỂM") },
+    { title: "TRƯỜNG HỌC", sub: "8", children: filterMangas("TRƯỜNG HỌC") },
+    { title: "HÀI HƯỚC", sub: "9", children: filterMangas("HÀI HƯỚC") },
+    { title: "XUYÊN KHÔNG", sub: "10", children: filterMangas("XUYÊN KHÔNG") },
+    { title: "VIỄN TƯỞNG", sub: "11", children: filterMangas("VIỄN TƯỞNG") },
+    {
+      title: "SIÊU NĂNG LỰC",
+      sub: "12",
+      children: filterMangas("SIÊU NĂNG LỰC"),
+    },
+    {
+      title: "ĐANG CẬP NHẬT",
+      sub: "13",
+      children: filterMangas("ĐANG CẬP NHẬT"),
+    },
   ];
 
   const renderContent = (tab, index) => {
     const style = {
-      padding: "40px",
       justifyContent: "center",
       alignItems: "center",
-      margin: "10px",
-      backgroundColor: "#ddd",
     };
     const content = (
-      <View key={`${index}_${tab}`} style={style}>
-        <Text>{tab?.children}</Text>
+      <View key={`${index}${tab}`} style={style}>
+        {tab?.children.map((it, idx) => (
+          <MangaItem manga={it} key={idx} />
+        ))}
       </View>
     );
-    return (
-      <ScrollView style={{ backgroundColor: "#fff" }}>{content}</ScrollView>
-    );
+    return content;
   };
 
   const InnerTab = (props) => {
     const { tabList } = props;
     return (
-      <View>
+      <View style={{ height: "100%" }}>
         <Tabs
           tabs={tabList}
           initialPage={0}
@@ -69,18 +81,8 @@ const TypesTabs = (props) => {
     );
   };
 
-  const tabStyle = {
-    tabStyle: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      height: "100%",
-      backgroundColor: "#fff",
-    },
-  };
-
   return (
-    <View style={{ display: "flex" }}>
+    <View style={{ height: "100%" }}>
       <Tabs
         tabs={tabs}
         initialPage={"1"}
@@ -94,12 +96,8 @@ const TypesTabs = (props) => {
           borderColor: "#FF5454",
         }}
       >
-        <View style={tabStyle}>
-          <InnerTab tabList={tabList} />
-        </View>
-        <View style={tabStyle}>
-          <InnerTab tabList={tabList} />
-        </View>
+        <InnerTab tabList={tabList} />
+        <InnerTab tabList={tabList} />
       </Tabs>
     </View>
   );
