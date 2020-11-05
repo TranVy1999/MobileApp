@@ -14,7 +14,7 @@ import "antd-mobile/dist/antd-mobile.css";
 import TypesTabs from "./components/TypesTabs";
 import CarouselHome from "./components/CarouselHome";
 import DiscoverTab from "./components/DiscoverTabs";
-
+import MeTab from "./components/MeTab"
 const HomeScreen = (props) => {
   const [selectedTab, setSelectedTab] = useState("homeTab");
 
@@ -61,6 +61,7 @@ const HomeScreen = (props) => {
       selected: "meTab",
       title: "Tôi",
       icon: faUserCircle,
+      children: <MeTab />,
       onPress: () => setSelectedTab("meTab"),
     },
   ];
