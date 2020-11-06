@@ -1,85 +1,55 @@
-import React from "react";
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Text,
-  Dimensions,
-} from "react-native";
-import { ListItem, Avatar } from "react-native-elements";
-import "antd-mobile/dist/antd-mobile.css";
+import React, {Component} from 'react';
+import { Text, View ,Image ,StyleSheet ,ImageBackground ,TouchableOpacity} from 'react-native';
+import {ListItem, Avatar} from 'react-native-elements';
+import 'antd-mobile/dist/antd-mobile.css';
 
-export default function Item(props) {
-  const { discovers } = props;
 
-  return (
-    <TouchableOpacity>
-      <ListItem bottomDivider style={styles.containerItem}>
-        <ListItem.Content>
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              width: "100%",
-            }}
-          >
-            <View>
-              <Avatar
-                style={styles.itemImage}
-                source={{ uri: discovers.imaged }}
-              />
-            </View>
-            <View style={styles.itemContent}>
-              <ListItem.Title style={styles.itemName}>
-                {discovers.name}
-              </ListItem.Title>
-              <ListItem.Subtitle>
-                <View style={styles.itemSubtitle}>
-                  <Text style={styles.contented}>
-                    {discovers.contented.length > 70
-                      ? discovers.contented.substring(0, 70 - 3) + "..."
-                      : discovers.contented}
-                  </Text>
-                </View>
-              </ListItem.Subtitle>
-            </View>
-          </View>
-        </ListItem.Content>
-      </ListItem>
-    </TouchableOpacity>
-  );
-}
-const styles = StyleSheet.create({
-  itemImage: {
-    width: 100,
-    height: 100,
-  },
-  itemName: {
-    fontWeight: "700",
-    color: "#ff6347",
-  },
-  itemSubtitle: {
-    padding: 10,
-    paddingLeft: 0,
-  },
-  contented: {
-    width: `calc(${Dimensions.get("window").width}px - 162px)`,
-  },
-  itemContent: {
-    width: `calc(${Dimensions.get("window").width}px - 162px)`,
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
-  containerItem: {
-    width: `calc(${Dimensions.get("window").width}px - 20px)`,
-    overflow: "hidden",
-    margin: 10,
-    marginBottom: 5,
-    borderRadius: 4,
-    backgroundColor: "#FFF",
-    shadowColor: "#000",
-    shadowOpacity: 0.3,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 0 },
-  },
-});
+export default function Item (props){  
+
+    
+    const { discovers} = props
+        
+        return (
+          <TouchableOpacity >
+            <ListItem   bottomDivider style={styles.containerItem}>
+                <Avatar style={styles.itemImage} source={{uri: discovers.imaged}} />
+                  <ListItem.Content>
+                  <ListItem.Title style={styles.itemName} >{discovers.name}</ListItem.Title>
+                  <ListItem.Subtitle style={styles.itemSubtitle}>{discovers.contented}</ListItem.Subtitle>
+                </ListItem.Content>
+               
+            </ListItem>
+        </TouchableOpacity>
+        );
+    }
+    const styles = StyleSheet.create({
+        itemImage : {
+            width: 100,
+            height: 80,
+            marginLeft:0,
+            margin: 10
+        },
+        itemName : {
+          fontWeight: '700',
+          color: '#ff6347',
+          marginTop: '0px'
+
+        },
+        itemSubtitle : {
+            marginTop: 10,
+          },
+        containerItem :{
+            flex:1,
+        //    flexDirection: 'row',
+            padding:10,
+            marginTop:10,
+            marginBottom:5,
+            alignItems: 'center',
+            borderRadius:4,
+            backgroundColor: '#FFF',
+            shadowColor: '#000',
+            shadowOpacity: 0.3,
+            shadowRadius: 10,
+            shadowOffset: {width : 0 , height:0}
+        }
+    }) ;
