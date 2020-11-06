@@ -11,7 +11,7 @@ import "antd-mobile/dist/antd-mobile.css";
 
 export default function Item(props) {
   const { discovers } = props;
-  console.log(discovers.name + 'abcc');
+
   return (
     <TouchableOpacity>
       <ListItem bottomDivider style={styles.containerItem}>
