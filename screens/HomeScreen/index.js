@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, lazy } from "react";
 import { TabBar } from "antd-mobile";
-import { View, Dimensions } from "react-native";
+import { View, Dimensions, Button } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
   faHome,
@@ -13,9 +13,12 @@ import {
 import "antd-mobile/dist/antd-mobile.css";
 import TypesTabs from "./components/TypesTabs";
 import CarouselHome from "./components/CarouselHome";
-import DiscoverTab from "./components/DiscoverTabs";
-import MeTab from "./components/MeTab"
+
+const DiscoverTab = lazy(() => import("./components/DiscoverTabs"));
+const MeTab = lazy(() => import("./components/MeTab"));
+
 const HomeScreen = (props) => {
+  const { navigation } = props;
   const [selectedTab, setSelectedTab] = useState("homeTab");
 
   const tabStyle = {
@@ -24,7 +27,7 @@ const HomeScreen = (props) => {
     color: "#ff5454",
   };
 
-  const navigation = [
+  const navigations = [
     {
       key: "home",
       selected: "homeTab",
@@ -54,6 +57,12 @@ const HomeScreen = (props) => {
       selected: "bookStoreTab",
       title: "Tủ sách",
       icon: faSwatchbook,
+      children: (
+        <Button
+          title="Go to Details"
+          onPress={() => navigation.navigate("MangaDetail")}
+        />
+      ),
       onPress: () => setSelectedTab("bookStoreTab"),
     },
     {
@@ -71,6 +80,7 @@ const HomeScreen = (props) => {
       style={{
         width: Dimensions.get("window").width,
         height: Dimensions.get("window").height,
+        maxHeight: Dimensions.get("window").height,
       }}
     >
       <TabBar
@@ -79,7 +89,7 @@ const HomeScreen = (props) => {
         barTintColor="white"
         tabBarPosition="bottom"
       >
-        {navigation?.map((it) => (
+        {navigations?.map((it) => (
           <TabBar.Item
             key={it?.key}
             title={it?.title}
