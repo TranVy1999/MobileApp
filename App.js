@@ -1,12 +1,11 @@
 import React, { useState, Suspense } from "react";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
-import HomeScreen from "./screens/HomeScreen";
 import configureStore from "./store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import Spinner from "./shares/Spiner";
-import { SafeAreaView } from "react-navigation";
+import Router from "./router.js";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -23,11 +22,9 @@ const App = () => {
     return (
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <SafeAreaView>
-            <Suspense fallback={<Spinner />}>
-              <HomeScreen />
-            </Suspense>
-          </SafeAreaView>
+          <Suspense fallback={<Spinner />}>
+            <Router />
+          </Suspense>
         </PersistGate>
       </Provider>
     );
@@ -35,14 +32,12 @@ const App = () => {
     return (
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <SafeAreaView>
-            <Suspense fallback={<Spinner />}>
-              <AppLoading
-                startAsync={getFonts}
-                onFinish={() => setFontLoaded(true)}
-              />
-            </Suspense>
-          </SafeAreaView>
+          <Suspense fallback={<Spinner />}>
+            <AppLoading
+              startAsync={getFonts}
+              onFinish={() => setFontLoaded(true)}
+            />
+          </Suspense>
         </PersistGate>
       </Provider>
     );
