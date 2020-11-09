@@ -11,6 +11,7 @@ import {
 import { Carousel, WingBlank } from "antd-mobile";
 import "antd-mobile/dist/antd-mobile.css";
 import Item from "./DiscoveryItem/Item";
+import Rank from "./DiscoveryItem/Rank";
 import { ListItem, Avatar } from "react-native-elements";
 
 const DiscoverTab = (props) => {
@@ -50,39 +51,49 @@ const DiscoverTab = (props) => {
       id: 5,
       name: "New article5",
       imaged:
-        "https://truyenvn.com/tin/wp-content/uploads/2020/10/top-truyen-yaoi-364x205.jpg",
+        "http://cn.e.pic.mangatoon.mobi/cartoon-posters/18164baf.jpg",
       contented: "thisscontentbbbbbbbassssssscccccbbbb",
     },
   ];
 
   const carouselImages = [
-    "http://cn.e.pic.mangatoon.mobi/homepage-banners/452-f491.jpg",
+    "http://cn.e.pic.mangatoon.mobi/homepage-banners/466-0793.jpg",
     "http://cn.e.pic.mangatoon.mobi/homepage-banners/458-a623.jpg",
-    "http://cn.e.pic.mangatoon.mobi/homepage-banners/456-4cff.jpg",
-    "http://cn.e.pic.mangatoon.mobi/homepage-banners/456-4cff.jpg",
+    "http://cn.e.pic.mangatoon.mobi/homepage-banners/465-b76f.jpg",
+    "https://riki.edu.vn/wp-content/uploads/2020/04/one-piece-01-1024x717.jpg",
+    "http://cn.e.pic.mangatoon.mobi/homepage-banners/470-dee7.jpg",
   ];
 
-  const RankingList = [
+  const rankingList = [
     {
       name: "One Piece ",
       avatar_url:
         "https://i.pinimg.com/564x/2f/27/93/2f279347b6f5cdfe48a8a15d9d456d33.jpg",
       subtitle: "content sub",
+      view : 1233,
     },
     {
       name: "One Punch Man",
       avatar_url:
         "https://static.epub.vn/epubvn-image/optimized-cover-1550675314370-poster.medium-(1).jpg",
       subtitle: "content sub 2",
+      view : 1500,
     },
     {
       name: "Doctor Tone",
       avatar_url:
-        "https://m.media-amazon.com/images/M/MV5BZTU1ODAyN2UtZjdlOC00ODUwLWE3NjEtYjE3NmViNTAwMzMyXkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_UY1200_CR85,0,630,1200_AL_.jpg",
+        "http://animehay.tv/uploads/images/2019/07/dr-stone-thumbnail.jpg",
       subtitle: "contensub 3",
+      view : 1001,
+    },
+    {
+      name: "Jujutsu Kaisen",
+      avatar_url:
+        "http://animehay.tv/uploads/images/2020/09/jujutsu-kaisen-tv-thumbnail.jpg",
+      subtitle: "contensub 4",
+      view : 500,
     },
   ];
-
   return (
     <View
       style={{
@@ -135,7 +146,7 @@ const DiscoverTab = (props) => {
             </Text>
           </View>
           <View>
-            {RankingList.map((l, i) => (
+            {/* {rankingList.map((l, i) => (
               <TouchableOpacity>
                 <ListItem key={i} bottomDivider>
                   <Avatar source={{ uri: l.avatar_url }} />
@@ -146,7 +157,14 @@ const DiscoverTab = (props) => {
                   <ListItem.Chevron />
                 </ListItem>
               </TouchableOpacity>
-            ))}
+            ))} */}
+            
+           <FlatList
+            data={rankingList}
+            renderItem={({ item}) => <Rank rank={item} />}
+            keyExtractor={(item) => `${item.name}`}
+          />
+
           </View>
         </View>
       </ScrollView>
