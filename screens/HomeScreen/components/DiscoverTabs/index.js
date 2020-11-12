@@ -159,7 +159,7 @@ const DiscoverTab = (props) => {
               </TouchableOpacity>
             ))} */}
             
-           <FlatList
+          <FlatList
             data={rankingList}
             renderItem={({ item}) => <Rank rank={item} />}
             keyExtractor={(item) => `${item.name}`}

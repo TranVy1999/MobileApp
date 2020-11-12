@@ -1,9 +1,10 @@
 import React from "react";
-import { View, Dimensions, ScrollView, Image, StyleSheet } from "react-native";
+import { View, Dimensions, ScrollView, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { Carousel, Grid } from "antd-mobile";
 import "antd-mobile/dist/antd-mobile.css";
 
 const CarouselHome = (props) => {
+  const {navigation} = props
   const heighPx = Dimensions.get("window").height * 0.33;
   const carouselImages = [
     "http://cn.e.pic.mangatoon.mobi/homepage-banners/452-f491.jpg",
@@ -59,6 +60,9 @@ const CarouselHome = (props) => {
     },
   ];
 
+  const onPressButton = () => {
+    console.log('abc => press button');
+  }
   return (
     <View
       style={{
@@ -107,8 +111,8 @@ const CarouselHome = (props) => {
             }}
           ></View>
         </View>
-        <View className="sub-title" style={styles.contentGird}>
-          Mới cập nhật!
+        {/* <View className="sub-title" style={styles.contentGird}>
+          <span>Mới cập nhật!</span>
         </View>
         <Grid
           data={data1}
@@ -146,7 +150,7 @@ const CarouselHome = (props) => {
         />
 
         <View className="sub-title" style={styles.contentGird}>
-          Đề Xuất!
+          <span> Đề Xuất!</span>
         </View>
         <Grid
           data={data2}
@@ -182,7 +186,7 @@ const CarouselHome = (props) => {
           )}
         />
         <View className="sub-title" style={styles.contentGird}>
-          Truyện Mới!
+          <span>Truyện Mới!</span>
         </View>
         <Grid
           data={data1}
@@ -217,10 +221,16 @@ const CarouselHome = (props) => {
               </View>
             </View>
           )}
-        />
+        /> */}
 
+          {/* <Button type="primary"
+            title="Go to Details"
+            onPress={() => props.navigation.navigate("MangaDetail")}
+          >
+              Go to Details
+          </Button> */}
         <View className="sub-title" style={styles.contentGird}>
-          Viễn Tưởng
+          <span>Viễn Tưởng</span>
         </View>
         <Grid
           data={data2}
@@ -228,7 +238,8 @@ const CarouselHome = (props) => {
           columnNum={2}
           hasLine={false}
           renderItem={(dataItem) => (
-            <View key={dataItem.key}>
+            <View key={dataItem.key} >
+              <TouchableOpacity onPress={() => props.navigation.navigate("MangaDetail")}>
               <img
                 src={dataItem.img}
                 style={{ width: "200px", height: "150px" }}
@@ -244,6 +255,7 @@ const CarouselHome = (props) => {
               >
                 <span>{dataItem.title}</span>
               </View>
+              </TouchableOpacity>
             </View>
           )}
         />

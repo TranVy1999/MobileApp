@@ -16,6 +16,7 @@ import CarouselHome from "./components/CarouselHome";
 
 const DiscoverTab = lazy(() => import("./components/DiscoverTabs"));
 const MeTab = lazy(() => import("./components/MeTab"));
+const MangaDetail = lazy(() => import("../MangaDetail"))
 
 const HomeScreen = (props) => {
   const { navigation } = props;
@@ -33,7 +34,7 @@ const HomeScreen = (props) => {
       selected: "homeTab",
       title: "Trang chủ",
       icon: faHome,
-      children: <CarouselHome />,
+      children: <CarouselHome navigation={navigation} />,
       onPress: () => setSelectedTab("homeTab"),
     },
     {
@@ -57,12 +58,7 @@ const HomeScreen = (props) => {
       selected: "bookStoreTab",
       title: "Tủ sách",
       icon: faSwatchbook,
-      children: (
-        <Button
-          title="Go to Details"
-          onPress={() => navigation.navigate("MangaDetail")}
-        />
-      ),
+      children: (<MangaDetail />),
       onPress: () => setSelectedTab("bookStoreTab"),
     },
     {
@@ -73,6 +69,7 @@ const HomeScreen = (props) => {
       children: <MeTab />,
       onPress: () => setSelectedTab("meTab"),
     },
+    
   ];
 
   return (

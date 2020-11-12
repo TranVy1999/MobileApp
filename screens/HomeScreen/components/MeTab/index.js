@@ -88,7 +88,7 @@ const MeTab = (props) => {
                   </TouchableOpacity>
                 ))}
           </View>
-     </View>
+    </View>
           
   );
 }
