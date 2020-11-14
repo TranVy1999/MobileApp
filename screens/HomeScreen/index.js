@@ -50,7 +50,7 @@ const HomeScreen = (props) => {
       selected: "discoveryTab",
       title: "Khám phá",
       icon: faCompass,
-      children: <DiscoverTab />,
+      children: <DiscoverTab navigation={navigation}  />,
       onPress: () => setSelectedTab("discoveryTab"),
     },
     {

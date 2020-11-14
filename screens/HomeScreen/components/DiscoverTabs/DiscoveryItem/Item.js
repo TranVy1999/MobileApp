@@ -7,13 +7,13 @@ import {
   Dimensions,
 } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
-import "antd-mobile/dist/antd-mobile.css";
+
 
 export default function Item(props) {
   const { discovers } = props;
-
+  const { navigation } = props;
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate("ContentDiscoverItem")}>
       <ListItem bottomDivider style={styles.containerItem}>
         <ListItem.Content>
           <View

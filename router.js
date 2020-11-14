@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 const HomeScreen = lazy(() => import("./screens/HomeScreen"));
 const MangaDetail = lazy(() => import("./screens/MangaDetail"));
+const ContentDiscoverItem = lazy(() => import("./screens/HomeScreen/components/DiscoverTabs/DiscoveryItem/ContentDiscoverItem"));
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ const Router = () => {
           }}
         />
         <Stack.Screen name="MangaDetail" component={MangaDetail} />
+        <Stack.Screen name="ContentDiscoverItem" component={ContentDiscoverItem} />
       </Stack.Navigator>
     </NavigationContainer>
   );

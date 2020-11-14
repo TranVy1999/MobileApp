@@ -6,55 +6,57 @@ import {
   FlatList,
   Dimensions,
   Image,
-  TouchableOpacity,
+  StyleSheet,
 } from "react-native";
-import { Carousel, WingBlank } from "antd-mobile";
+import { Carousel} from "antd-mobile";
 import "antd-mobile/dist/antd-mobile.css";
 import Item from "./DiscoveryItem/Item";
 import Rank from "./DiscoveryItem/Rank";
-import { ListItem, Avatar } from "react-native-elements";
+
 
 const DiscoverTab = (props) => {
+  const {navigation} = props
   const heighPx = Dimensions.get("window").height * 0.33;
 
   const discovers = [
     {
       id: 1,
-      name: "New article1",
+      name: "Naruto",
       imaged:
-        "https://truyenvn.com/tin/wp-content/uploads/2020/10/top-light-novel-2020.jpg",
-      contented: "this is content 1 ",
+        "https://animehay.tv/uploads/images/2016/02/naruto-phan-2-300-thumbnail.jpg",
+      contented: "Naruto chính là cậu bé đã may mắn sống xót trong một trận phong ba bão táp, tất cả mọi thứ đã ra đi chỉ còn duy nhất một mình cậu với cuộc phưu lưu đầy mạo hiểm, những cơn lốc xoáy và gió cát đã khiến cho biết bao nhiêu người bỏ mạng tại khu làng Lá, may mắn thay cậu đã được sư phụ của mình chính là người đã có nhiều quyền năng tối cao giúp đỡ, ai ai nghe sư phụ Jiraiya củng đều cảm thấy dường như Naruto thật mang mắn",
     },
     {
       id: 2,
-      name: "New article2",
+      name: "Connan",
       imaged:
-        "https://truyenvn.com/tin/wp-content/uploads/2020/10/kimetsu-no-yaiba-movie-364x205.jpg",
+        "https://animehay.tv/uploads/images/2016/03/tham-tu-lung-danh-conan-439-thumbnail.jpg",
       contented:
-        "thisiscontent2erererererereererdsdasâsdasdasdDẤDAdfsdsdfsddsfsdfdsdsfdsdfasdasdaadascasdaascasdasdaacvascvấcasasầa",
+        "Shinichi trong phần đầu của Thám tử lừng danh Conan được miêu tả là một thám tử học đường. Trong một lần đi chơi công viên _Miền Nhiệt đới_ với cô bạn từ thuở nhỏ (cũng là bạn gái) Ran Mori (Rachel Moore), cậu bị dính vào vụ án một hành khách trên Chuyến tàu tốc hành trong công viên, Kishida (Kenneth), bị giết trong một vụ án cắt đầu rùng rợn.",
     },
     {
       id: 3,
-      name: "New article3",
+      name: "Pokemon",
       imaged:
-        "https://truyenvn.com/tin/wp-content/uploads/2020/10/toi-tro-thanh-hau-gai-cua-ba-tuoc-avatar-364x205.jpg",
-      contented: "thisiscontentasdadsadascascascacacssdaadáda",
+        "https://animehay.tv/uploads/images/2016/09/pokemon-tong-hop-thumbnail.jpg",
+      contented: "Phim xoay quanh cuộc phiêu lưu của nhân vật Satoshi, đi thu phục những pokemon đồng hành và mục tiêu trở thành nhà huấn luyện Pokemon tài ba. Hãy cùng theo dõi cuộc hành trình dầy chông gai của anh chàng này nhé.",
     },
     {
       id: 4,
-      name: "New article4",
+      name: "Vũ động càn khôn",
       imaged:
-        "https://truyenvn.com/tin/wp-content/uploads/2020/10/top-truyen-yaoi-364x205.jpg",
-      contented: "thisiscontent4daasssssssssssssssssssssssssss",
+        "https://animehay.tv/uploads/images/2020/07/vu-dong-can-khon-thumbnail.png",
+      contented: "Một đường tu luyện, trộm âm dương, đoạt vận may, chuyển thế niết bàn, nắm giữ sinh tử, chấp chưởng luân hồi. Vũ Chi Cực, Phá thương khung, động càn khôn! Một thế giới tiên hiệp mênh mông thần bí vô tận, nhiệt huyết như núi lửa sôi trào, cảm xúc mạnh mẽ như sóng biển gầm rú, dục vọng sâu thẳm như vực sâu hun hút",
     },
     {
       id: 5,
-      name: "New article5",
+      name: " Attack On Titan",
       imaged:
-        "http://cn.e.pic.mangatoon.mobi/cartoon-posters/18164baf.jpg",
-      contented: "thisscontentbbbbbbbassssssscccccbbbb",
+        "https://animehay.tv/uploads/images/2020/07/hingeki-no-kyojin-chronicle-thumbnail.jpg",
+      contented: "Cuộc chiến của con người chống lại các Titan khổng lồ để giành giật mạng sống của mình. Vài trăm năm trước, con người bắt đầu bị tấn công bởi những người Khổng lồ, một sinh vật ăn thịt người. Đáng ngại thay, chúng ăn con người như một thú vui hơn là nhu cầu ăn uống. Diện tích sống của con người ngày càng thu hẹp dần, họ đành phải xây những bước tường cao đến 60m để ngăn người Khổng lồ cao nhất lúc đó là 15m. ",
     },
   ];
+
 
   const carouselImages = [
     "http://cn.e.pic.mangatoon.mobi/homepage-banners/466-0793.jpg",
@@ -127,10 +129,10 @@ const DiscoverTab = (props) => {
               </View>
             ))}
           </Carousel>
-
+               <Text style={styles.title}> TIN MANGA </Text>
           <FlatList
             data={discovers}
-            renderItem={({ item }) => <Item discovers={item} />}
+            renderItem={({ item }) => <Item discovers={item} navigation={navigation} />}
             keyExtractor={(item) => `${item.id}`}
           />
 
@@ -146,22 +148,10 @@ const DiscoverTab = (props) => {
             </Text>
           </View>
           <View>
-            {/* {rankingList.map((l, i) => (
-              <TouchableOpacity>
-                <ListItem key={i} bottomDivider>
-                  <Avatar source={{ uri: l.avatar_url }} />
-                  <ListItem.Content>
-                    <ListItem.Title>{l.name}</ListItem.Title>
-                    <ListItem.Subtitle>{l.subtitle}</ListItem.Subtitle>
-                  </ListItem.Content>
-                  <ListItem.Chevron />
-                </ListItem>
-              </TouchableOpacity>
-            ))} */}
             
           <FlatList
             data={rankingList}
-            renderItem={({ item}) => <Rank rank={item} />}
+            renderItem={({ item}) => <Rank rank={item} navigation={navigation} />}
             keyExtractor={(item) => `${item.name}`}
           />
 
@@ -171,5 +161,15 @@ const DiscoverTab = (props) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  title: {
+    fontWeight: "800",
+    color: "#0000ff",
+    margin: 18,
+    fontSize: 25,
+  },
+ 
+});
 
 export default DiscoverTab;
