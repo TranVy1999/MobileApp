@@ -66,7 +66,7 @@ const HomeScreen = (props) => {
       selected: "meTab",
       title: "Tôi",
       icon: faUserCircle,
-      children: <MeTab />,
+      children: <MeTab navigation ={navigation}/>,
       onPress: () => setSelectedTab("meTab"),
     },
     
