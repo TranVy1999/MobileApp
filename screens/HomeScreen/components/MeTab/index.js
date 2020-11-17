@@ -4,32 +4,33 @@ import {
   Text,
   Dimensions,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
+  Button
 } from "react-native";
 import "antd-mobile/dist/antd-mobile.css";
 import { ListItem, Avatar ,Badge} from "react-native-elements";
 
 const MeTab = (props) => {
 
-
+  const {navigation} = props
   const listMetab = [
-    {
+    { key: 1,
       title: 'Cập nhật thông tin',
       icon: 'https://www.flaticon.com/svg/static/icons/svg/3039/3039437.svg'
     },
-    {
+    { key: 2,
       title: 'Lịch sử',
       icon: 'https://www.flaticon.com/svg/static/icons/svg/3602/3602274.svg'
     },
-    {
+    { key: 3,
       title: 'Ngôn ngữ',
       icon: 'https://www.flaticon.com/svg/static/icons/svg/888/888878.svg'
     },
-    {
+    { key: 4,
       title: 'Phiên Bản',
       icon: 'https://www.flaticon.com/svg/static/icons/svg/1000/1000914.svg'
     },
-    {
+    { key: 5,
       title: 'Giới thiệu',
       icon: 'https://www.flaticon.com/svg/static/icons/svg/892/892339.svg'
     },
@@ -76,9 +77,9 @@ const MeTab = (props) => {
                   
           </View>
           <View>
-              {listMetab.map((item, index) => (
+              {listMetab?.map((item) => (
                   <TouchableOpacity>
-                    <ListItem key={index} bottomDivider>
+                    <ListItem key={(item.key) } bottomDivider>
                       <Avatar source={{ uri: item.icon }} />
                       <ListItem.Content>
                         <ListItem.Title>{item.title}</ListItem.Title>
@@ -87,6 +88,13 @@ const MeTab = (props) => {
                     </ListItem>
                   </TouchableOpacity>
                 ))}
+          </View>
+          <View>            
+                  <Button
+                title="Đăng nhập"
+                color="#ed0707"
+                onPress={() => navigation.navigate("Login")}
+              />
           </View>
     </View>
           
