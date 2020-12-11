@@ -5,6 +5,8 @@ import MangaItem from "../../../../shares/MangaItem";
 import mangas from "../../../../manga";
 
 const TypesTabs = (props) => {
+  const { navigation } = props;
+
   const tabs = [
     { title: "Truyện tranh", sub: "1" },
     { title: "Truyện Chat", sub: "2" },
@@ -48,7 +50,7 @@ const TypesTabs = (props) => {
     const content = (
       <View key={`${index}${tab}`} style={style}>
         {tab?.children.map((it, idx) => (
-          <MangaItem manga={it} key={idx} />
+          <MangaItem manga={it} key={idx} navigation={navigation} />
         ))}
       </View>
     );

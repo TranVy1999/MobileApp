@@ -1,10 +1,17 @@
 import React from "react";
-import { View, Dimensions, ScrollView, Image, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Dimensions,
+  ScrollView,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import { Carousel, Grid } from "antd-mobile";
 import "antd-mobile/dist/antd-mobile.css";
 
 const CarouselHome = (props) => {
-  const {navigation} = props
+  const { navigation } = props;
   const heighPx = Dimensions.get("window").height * 0.33;
   const carouselImages = [
     "http://cn.e.pic.mangatoon.mobi/homepage-banners/452-f491.jpg",
@@ -61,8 +68,8 @@ const CarouselHome = (props) => {
   ];
 
   const onPressButton = () => {
-    console.log('abc => press button');
-  }
+    console.log("abc => press button");
+  };
   return (
     <View
       style={{
@@ -223,7 +230,7 @@ const CarouselHome = (props) => {
           )}
         /> */}
 
-          {/* <Button type="primary"
+        {/* <Button type="primary"
             title="Go to Details"
             onPress={() => props.navigation.navigate("MangaDetail")}
           >
@@ -238,23 +245,25 @@ const CarouselHome = (props) => {
           columnNum={2}
           hasLine={false}
           renderItem={(dataItem) => (
-            <View key={dataItem.key} >
-              <TouchableOpacity onPress={() => props.navigation.navigate("MangaDetail")}>
-              <img
-                src={dataItem.img}
-                style={{ width: "200px", height: "150px" }}
-                alt=""
-              />
-              <View
-                style={{
-                  color: "#888",
-                  fontSize: "14px",
-                  marginTop: "12px",
-                  textAlign: "initial",
-                }}
+            <View key={dataItem.key}>
+              <TouchableOpacity
+                onPress={() => props.navigation.navigate("MangaDetail")}
               >
-                <span>{dataItem.title}</span>
-              </View>
+                <img
+                  src={dataItem.img}
+                  style={{ width: "200px", height: "150px" }}
+                  alt=""
+                />
+                <View
+                  style={{
+                    color: "#888",
+                    fontSize: "14px",
+                    marginTop: "12px",
+                    textAlign: "initial",
+                  }}
+                >
+                  <span>{dataItem.title}</span>
+                </View>
               </TouchableOpacity>
             </View>
           )}

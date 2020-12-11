@@ -16,7 +16,7 @@ import CarouselHome from "./components/CarouselHome";
 
 const DiscoverTab = lazy(() => import("./components/DiscoverTabs"));
 const MeTab = lazy(() => import("./components/MeTab"));
-const MangaDetail = lazy(() => import("../MangaDetail"))
+const MangaDetail = lazy(() => import("../MangaDetail"));
 
 const HomeScreen = (props) => {
   const { navigation } = props;
@@ -42,7 +42,7 @@ const HomeScreen = (props) => {
       selected: "categoriesTab",
       title: "Phân loại",
       icon: faLayerGroup,
-      children: <TypesTabs />,
+      children: <TypesTabs navigation={navigation} />,
       onPress: () => setSelectedTab("categoriesTab"),
     },
     {
@@ -50,7 +50,7 @@ const HomeScreen = (props) => {
       selected: "discoveryTab",
       title: "Khám phá",
       icon: faCompass,
-      children: <DiscoverTab navigation={navigation}  />,
+      children: <DiscoverTab navigation={navigation} />,
       onPress: () => setSelectedTab("discoveryTab"),
     },
     {
@@ -58,7 +58,7 @@ const HomeScreen = (props) => {
       selected: "bookStoreTab",
       title: "Tủ sách",
       icon: faSwatchbook,
-      children: (<MangaDetail />),
+      children: <MangaDetail />,
       onPress: () => setSelectedTab("bookStoreTab"),
     },
     {
@@ -66,10 +66,9 @@ const HomeScreen = (props) => {
       selected: "meTab",
       title: "Tôi",
       icon: faUserCircle,
-      children: <MeTab navigation ={navigation}/>,
+      children: <MeTab navigation={navigation} />,
       onPress: () => setSelectedTab("meTab"),
     },
-    
   ];
 
   return (

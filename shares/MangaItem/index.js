@@ -13,7 +13,7 @@ const MangaItem = (props) => {
   const { manga } = props;
 
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => props?.navigation.navigate("MangaDetail")}>
       <ListItem bottomDivider style={styles.containerItem}>
         <ListItem.Content>
           <View

@@ -8,12 +8,13 @@ import {
 } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
 
-
 export default function Item(props) {
   const { discovers } = props;
   const { navigation } = props;
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("ContentDiscoverItem")}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("ContentDiscoverItem")}
+    >
       <ListItem bottomDivider style={styles.containerItem}>
         <ListItem.Content>
           <View
