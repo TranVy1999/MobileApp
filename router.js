@@ -6,7 +6,11 @@ const HomeScreen = lazy(() => import("./screens/HomeScreen"));
 const MangaDetail = lazy(() => import("./screens/MangaDetail"));
 const ContentDiscoverItem = lazy(() => import("./screens/HomeScreen/components/DiscoverTabs/DiscoveryItem/ContentDiscoverItem"));
 const Login =lazy(() => import("./screens/HomeScreen/components/MeTab/Login"))
-
+const Register =lazy(() => import("./screens/HomeScreen/components/MeTab/register"));
+const ForgotPass =lazy(() => import("./screens/HomeScreen/components/MeTab/forgotPass"));
+const Notification =lazy(() => import("./screens/HomeScreen/components/MeTab/Notification"));
+const Language =lazy(() => import("./screens/HomeScreen/components/MeTab/SubMeTab/Language"));
+const UpdateInformation =lazy(() => import("./screens/HomeScreen/components/MeTab/SubMeTab/UpdateInformation"));
 const Stack = createStackNavigator();
 
 const Router = () => {
@@ -26,6 +30,11 @@ const Router = () => {
         <Stack.Screen name="MangaDetail" component={MangaDetail} />
         <Stack.Screen name="ContentDiscoverItem" component={ContentDiscoverItem} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="ForgotPass" component={ForgotPass} />
+        <Stack.Screen name="Notification" component={Notification} />
+        <Stack.Screen name="Language" component={Language} />
+        <Stack.Screen name="UpdateInformation" component={UpdateInformation} />
       </Stack.Navigator>
     </NavigationContainer>
   );
