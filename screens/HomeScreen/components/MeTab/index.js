@@ -3,122 +3,168 @@ import {
   View,
   Text,
   Dimensions,
+  ActivityIndicator,
   TouchableOpacity,
   StyleSheet,
+  ScrollView,
   Button,
 } from "react-native";
-import { ListItem, Avatar, Badge } from "react-native-elements";
+
+import { ListItem, Avatar ,Badge } from "react-native-elements";
 
 const MeTab = (props) => {
-  const { navigation } = props;
-  const listMetab = [
-    {
-      key: 1,
-      title: "Cập nhật thông tin",
-      icon: "https://www.flaticon.com/svg/static/icons/svg/3039/3039437.svg",
-    },
-    {
-      key: 2,
-      title: "Lịch sử",
-      icon: "https://www.flaticon.com/svg/static/icons/svg/3602/3602274.svg",
-    },
-    {
-      key: 3,
-      title: "Ngôn ngữ",
-      icon: "https://www.flaticon.com/svg/static/icons/svg/888/888878.svg",
-    },
-    {
-      key: 4,
-      title: "Phiên Bản",
-      icon: "https://www.flaticon.com/svg/static/icons/svg/1000/1000914.svg",
-    },
-    {
-      key: 5,
-      title: "Giới thiệu",
-      icon: "https://www.flaticon.com/svg/static/icons/svg/892/892339.svg",
-    },
-  ];
 
-  const Information = {
-    name_account: "Viet Nguyen",
-    pass: "123123",
-    avatar_url:
-      "https://thuthuatnhanh.com/wp-content/uploads/2018/07/anh-dai-dien-dep.jpg",
-    subtitle: "content sub",
-    email: "me1236666@gmail.com",
-  };
+  const {navigation} = props
+ 
 
-  const name = Information.name_account;
+  const Information = 
+    {
+      name_account: "Viet Nguyen",
+      pass: "123123",
+      avatar_url:
+        "https://thuthuatnhanh.com/wp-content/uploads/2018/07/anh-dai-dien-dep.jpg",
+      subtitle: "content sub",
+      email: "me1236666@gmail.com",
+    };
+
+  const name= Information.name_account;
   const avataicon = Information.avatar_url;
   return (
-    <View>
-      <View style={styles.containerInfor}>
-        <View style={styles.content}>
-          <Avatar
-            size="medium"
-            rounded // làm tròn
-            source={{
-              uri: avataicon,
-            }}
-          />
-          <Text style={styles.itemName}>{name}</Text>
-          <View>
-            <TouchableOpacity>
-              <Avatar
-                source={{
-                  uri:
-                    "https://www.flaticon.com/svg/static/icons/svg/709/709846.svg",
-                }}
-                size="small"
-              />
-              <Badge
-                value="9+"
-                status="success"
-                containerStyle={{ position: "absolute", top: -4, right: -4 }}
-              />
-            </TouchableOpacity>
+    <View   style={styles.container}>
+          <View
+            style={styles.containerInfor}>
+                <View  style={styles.content}>          
+                    <Avatar
+                    size="medium"
+                    rounded // làm tròn
+                    source={{
+                      uri:
+                        avataicon,
+                    }}/>
+                    <Text style ={styles.itemName}>{name}</Text>
+                      <View >
+                        <TouchableOpacity onPress={() => navigation.navigate("Notification")}>
+                          <Avatar           
+                            source={{
+                              uri: 'https://www.flaticon.com/svg/static/icons/svg/709/709846.svg',
+                            }}
+                            size="small"/>
+                          <Badge value="9+" status="success" 
+                                containerStyle={{ position: 'absolute', top: -4, right: -4 }}/>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                  
           </View>
-        </View>
-      </View>
-      <View>
-        {listMetab?.map((item) => (
-          <TouchableOpacity>
-            <ListItem key={item.key} bottomDivider>
-              <Avatar source={{ uri: item.icon }} />
-              <ListItem.Content>
-                <ListItem.Title>{item.title}</ListItem.Title>
-              </ListItem.Content>
-              <ListItem.Chevron />
-            </ListItem>
-          </TouchableOpacity>
-        ))}
-      </View>
-      <View style={{ margin: "10px" }}>
-        <Button
-          style={styles.loginBtn}
-          title="Đăng nhập"
-          color="#14b"
-          onPress={() => navigation.navigate("Login")}
-        />
-      </View>
+                <View >
+                     <ScrollView horizontal={true}>
+                          <View style={styles.imageScroll} >        
+                                <View style={{textAlign: 'center',marginTop: '20%' }}>
+                                        <Avatar  rounded source={{ uri: 'https://www.flaticon.com/svg/static/icons/svg/2933/2933116.svg',}}/>
+                                </View>
+                                <View style={{ marginTop: '25%'}}>
+                                         <Text style={{textAlign: 'center',fontWeight: "700",}} >Số Xu: 0</Text>
+                                </View>
+                          </View>
+                          <View style={styles.imageScroll} >        
+                                <View style={{textAlign: 'center',marginTop: '20%' }}>
+                                        <Avatar  rounded source={{ uri: 'https://www.flaticon.com/svg/static/icons/svg/3190/3190503.svg',}}/>
+                                </View>
+                                <View style={{ marginTop: '25%'}}>
+                                        <Text style={{textAlign: 'center',fontWeight: "700",}} >Số điểm: 0</Text>
+                                </View>
+                          </View>
+                     </ScrollView>
+
+                  <TouchableOpacity onPress={() => navigation.navigate("UpdateInformation")}>
+                    <ListItem key={1} bottomDivider>
+                      <Avatar source={{ uri: 'https://www.flaticon.com/svg/static/icons/svg/3039/3039437.svg' }} />
+                      <ListItem.Content>
+                        <ListItem.Title>Cập nhật thông tin</ListItem.Title>
+                      </ListItem.Content>
+                      <ListItem.Chevron />
+                    </ListItem>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity>
+                    <ListItem key={2} bottomDivider>
+                      <Avatar source={{ uri: 'https://www.flaticon.com/svg/static/icons/svg/845/845665.svg' }} />
+                      <ListItem.Content>
+                        <ListItem.Title>Nạp tiền</ListItem.Title>
+                      </ListItem.Content>
+                      <ListItem.Chevron />
+                    </ListItem>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity onPress={() => navigation.navigate("Language")}>
+                    <ListItem key={3} bottomDivider>
+                      <Avatar source={{ uri: 'https://www.flaticon.com/svg/static/icons/svg/888/888878.svg' }} />
+                      <ListItem.Content>
+                        <ListItem.Title>Ngôn ngữ</ListItem.Title>
+                      </ListItem.Content>
+                      <ListItem.Chevron />
+                    </ListItem>
+                  </TouchableOpacity>
+
+                
+                    <ListItem key={4} bottomDivider>
+                      <Avatar source={{ uri: 'https://www.flaticon.com/svg/static/icons/svg/1000/1000914.svg' }} />
+                      <ListItem.Content>
+                        <ListItem.Title>Phiên bản </ListItem.Title>
+                        <ListItem.Subtitle>1.0</ListItem.Subtitle>
+                      </ListItem.Content>
+                    
+                    </ListItem>
+                 
+
+                  <TouchableOpacity>
+                    <ListItem key={5} bottomDivider>
+                      <Avatar source={{ uri: 'https://www.flaticon.com/svg/static/icons/svg/892/892339.svg' }} />
+                      <ListItem.Content>
+                        <ListItem.Title>Giới thiệu</ListItem.Title>
+                      </ListItem.Content>
+                      <ListItem.Chevron />
+                    </ListItem>
+                  </TouchableOpacity>
+
+                  
+          </View>
+          <View style={styles.stylebtn}>
+            
+          <Button  
+              title="Đăng nhập"
+              color="#ed0707"
+              onPress={() => navigation.navigate("Login")}
+            />
+          </View>
     </View>
+          
   );
-};
+}
 
 const styles = StyleSheet.create({
-  content: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "90%",
-    margin: 10,
-  },
+  container:{ 
+           width: `calc(${Dimensions.get("window").width}px)`,
+           height: "100%",
+           backgroundColor:"#FFF",
+            },
+  stylebtn:{ 
+          marginTop: 200,
+          marginEnd: 10,
+           backgroundColor:"#FFF",
+            },     
+
+  content:{ display: "flex",
+           flexDirection: "row",
+           justifyContent: 'space-between',
+           width: "90%",
+           margin:10 },
   itemName: {
     fontWeight: "700",
     color: "#ff6347",
-    margin: 18,
+    margin: 18
   },
-  containerInfor: {
+  containerInfor:{
     width: `calc(${Dimensions.get("window").width}px - 20px)`,
     overflow: "hidden",
     margin: 10,
@@ -130,8 +176,17 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     shadowOffset: { width: 0, height: 0 },
   },
-  loginBtn: {
-    width: "90%",
+  imageScroll:{ 
+           display: "flex",
+           flexDirection: "row",
+           justifyContent: 'space-around',
+           textAlign: 'center',
+           width: 150,
+           height: 100,
+           marginLeft: 22,
+           borderRadius: 10,
+           backgroundColor: "#E3E9DE",
+  
   },
 });
 
