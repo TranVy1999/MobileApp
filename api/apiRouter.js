@@ -15,31 +15,20 @@ export const registerRequest = buildRequest("/user/register", {
 });
 
 // Manga
-export const getMangas = (params) =>
-  params
-    ? buildRequest(`/manga?${qs.stringify(params)}`, {
-        method: "GET",
-      }).request()
-    : buildRequest(`/manga`, {
-        method: "GET",
-      }).request();
-export const getMangasByCategory = (params) => {
-  const { title } = params;
+export const getMangas = (params) => buildRequest("").request();
+// params
+//   ? buildRequest(`/manga?${qs.stringify(params)}`, {
+//       method: "GET",
+//     }).request()
+//   : buildRequest(`/manga`, {
+//       method: "GET",
+//     }).request();
 
-  if (params) {
-    return buildRequest(`/manga/category/${title}?${qs.stringify(params)}`, {
-      method: "GET",
-    }).request();
-  } else {
-    return buildRequest(`/manga/category/${title}`, {
-      method: "GET",
-    }).request();
-  }
-};
-export const getMangaById = (id) =>
-  buildRequest(`/manga/detail/${id}`, { method: "GET" }).request();
-export const getRelatedManga = (id) =>
-  buildRequest(`/manga/related/${id}`, { method: "GET" }).request();
+// export const getMangaById = (id) =>
+//   buildRequest(`/manga/detail/${id}`, { method: "GET" }).request();
+
+// export const getRelatedManga = (id) =>
+//   buildRequest(`/manga/related/${id}`, { method: "GET" }).request();
 // export const createRating = (data) =>
 //   buildRequest(`/manga/rating/${data?.mangaId}`).request({
 //     method: "POST",

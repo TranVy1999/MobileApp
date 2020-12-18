@@ -1,7 +1,8 @@
-import React, { useState, lazy } from "react";
+import React, { useState, lazy, useEffect } from "react";
 import { TabBar } from "antd-mobile";
-import { View, Dimensions, Button } from "react-native";
+import { View, Dimensions } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { useDispatch, useSelector } from "react-redux";
 import {
   faHome,
   faLayerGroup,
@@ -10,6 +11,7 @@ import {
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { actionCreators } from "../../store/manga/manga.meta";
 import "antd-mobile/dist/antd-mobile.css";
 import TypesTabs from "./components/TypesTabs";
 import CarouselHome from "./components/CarouselHome";
@@ -27,6 +29,17 @@ const HomeScreen = (props) => {
     height: "22px",
     color: "#ff5454",
   };
+
+  const dispatch = useDispatch();
+
+  const fetchMangas = () => {
+    dispatch(actionCreators.actFetchMangas());
+  };
+
+  const mangas = useSelector((store) => store.manga?.mangas);
+  console.log(mangas);
+
+  useEffect(() => fetchMangas(), []);
 
   const navigations = [
     {
