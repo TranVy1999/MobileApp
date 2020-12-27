@@ -1,15 +1,8 @@
-<<<<<<< Updated upstream
-import React, { useState, lazy, useEffect } from "react";
-import { TabBar } from "antd-mobile";
-import { View, Dimensions } from "react-native";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { useDispatch, useSelector } from "react-redux";
-=======
-import React, { useState, lazy } from 'react';
+import React, { useState, lazy, useEffect } from 'react';
 import { TabBar } from 'antd-mobile';
-import { View, Dimensions, Button } from 'react-native';
+import { View, Dimensions } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
->>>>>>> Stashed changes
+import { useDispatch, useSelector } from 'react-redux';
 import {
 	faHome,
 	faLayerGroup,
@@ -18,8 +11,8 @@ import {
 	faUserCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { actionCreators } from "../../store/manga/manga.meta";
-import "antd-mobile/dist/antd-mobile.css";
+import { actionCreators } from '../../store/manga/manga.meta';
+import 'antd-mobile/dist/antd-mobile.css';
 import TypesTabs from './components/TypesTabs';
 import CarouselHome from './components/CarouselHome';
 
@@ -36,62 +29,17 @@ const HomeScreen = (props) => {
 		height: '22px',
 		color: '#ff5454',
 	};
+	const dispatch = useDispatch();
 
-<<<<<<< Updated upstream
-  const dispatch = useDispatch();
+	const fetchMangas = () => {
+		dispatch(actionCreators.actFetchMangas());
+	};
 
-  const fetchMangas = () => {
-    dispatch(actionCreators.actFetchMangas());
-  };
+	const mangas = useSelector((store) => store.manga?.mangas);
+	console.log(mangas);
 
-  const mangas = useSelector((store) => store.manga?.mangas);
-  console.log(mangas);
+	useEffect(() => fetchMangas(), []);
 
-  useEffect(() => fetchMangas(), []);
-
-  const navigations = [
-    {
-      key: "home",
-      selected: "homeTab",
-      title: "Trang chủ",
-      icon: faHome,
-      children: <CarouselHome navigation={navigation} />,
-      onPress: () => setSelectedTab("homeTab"),
-    },
-    {
-      key: "categories",
-      selected: "categoriesTab",
-      title: "Phân loại",
-      icon: faLayerGroup,
-      children: <TypesTabs navigation={navigation} />,
-      onPress: () => setSelectedTab("categoriesTab"),
-    },
-    {
-      key: "discovery",
-      selected: "discoveryTab",
-      title: "Khám phá",
-      icon: faCompass,
-      children: <DiscoverTab navigation={navigation} />,
-      onPress: () => setSelectedTab("discoveryTab"),
-    },
-    {
-      key: "bookStore",
-      selected: "bookStoreTab",
-      title: "Tủ sách",
-      icon: faSwatchbook,
-      children: <MangaDetail />,
-      onPress: () => setSelectedTab("bookStoreTab"),
-    },
-    {
-      key: "me",
-      selected: "meTab",
-      title: "Tôi",
-      icon: faUserCircle,
-      children: <MeTab navigation={navigation} />,
-      onPress: () => setSelectedTab("meTab"),
-    },
-  ];
-=======
 	const navigations = [
 		{
 			key: 'home',
@@ -122,7 +70,7 @@ const HomeScreen = (props) => {
 			selected: 'bookStoreTab',
 			title: 'Tủ sách',
 			icon: faSwatchbook,
-			children: <MangaDetail />,
+			// children: <MangaDetail />,
 			onPress: () => setSelectedTab('bookStoreTab'),
 		},
 		{
@@ -134,8 +82,6 @@ const HomeScreen = (props) => {
 			onPress: () => setSelectedTab('meTab'),
 		},
 	];
->>>>>>> Stashed changes
-
 	return (
 		<View
 			style={{

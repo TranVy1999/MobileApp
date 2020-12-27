@@ -92,12 +92,12 @@ const CarouselHome = (props) => {
 							<TouchableOpacity
 								onPress={() =>
 									props.navigation.navigate('MangaDetail', {
-										id: dataItem?.id,
+										data: dataItem,
 									})
 								}
 							>
 								<img
-									src={dataItem?.img}
+									src={dataItem?.avatar}
 									style={{ width: '175px', height: '150px' }}
 									alt=""
 								/>
@@ -137,12 +137,12 @@ const CarouselHome = (props) => {
 							<TouchableOpacity
 								onPress={() =>
 									props.navigation.navigate('MangaDetail', {
-										id: dataItem?.id,
+										data: dataItem,
 									})
 								}
 							>
 								<img
-									src={dataItem?.img}
+									src={dataItem?.avatar}
 									style={{ width: '175px', height: '150px' }}
 									alt=""
 								/>
@@ -183,12 +183,12 @@ const CarouselHome = (props) => {
 							<TouchableOpacity
 								onPress={() => {
 									props.navigation.navigate('MangaDetail', {
-										id: dataItem?.id,
+										data: dataItem,
 									});
 								}}
 							>
 								<img
-									src={dataItem?.img}
+									src={dataItem?.avatar}
 									style={{ width: '175px', height: '150px' }}
 									alt=""
 								/>
@@ -218,16 +218,8 @@ const CarouselHome = (props) => {
 						<View key={dataItem?.id}>
 							<TouchableOpacity
 								onPress={() => {
-									// props.navigation.addListener(
-									// 	'changeName',
-									// 	(e, name) => {
-									// 		e.preventDefault();
-									// 	}
-									// );
-									// initialParams = { key: dataItem?.id };
 									props.navigation.navigate('MangaDetail', {
-										id: dataItem?.id,
-										name: dataItem?.name,
+										data: dataItem,
 									});
 								}}
 							>
