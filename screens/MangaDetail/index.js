@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import { Tabs, WhiteSpace, Grid } from 'antd-mobile';
 
 const tabs = [{ title: 'Chi Tiết' }, { title: 'Chapters' }];
@@ -30,14 +30,11 @@ const data1 = [
 
 const MangaDetail = (props) => {
 	const { navigation } = props;
+	const { data } = props.route.params;
 	return (
 		<View>
 			<View>
-				<img
-					src="http://cn.e.pic.mangatoon.mobi/cartoon-big-images/419616575c.jpg"
-					style={{ width: '100%' }}
-					alt=""
-				/>
+				<img src={data.avatar} style={{ width: '100%' }} alt="" />
 			</View>
 			<View>
 				<Tabs
@@ -58,7 +55,7 @@ const MangaDetail = (props) => {
 							ellipsizeMode={'clip'}
 							style={{ marginTop: '10px', marginBottom: '10px' }}
 						>
-							Tiến Hóa Thần Chủng Truyện Tranh Trực Tuyến. Truyền
+							{/* Tiến Hóa Thần Chủng Truyện Tranh Trực Tuyến. Truyền
 							thuyết kể rằng, khi tất cả các đất nước nguyên tố
 							xuất hiện rung chuyển và tai họa thì người thừa kế
 							của Lôi quốc mới xuất hiện. Sau một trận động đất
@@ -66,12 +63,18 @@ const MangaDetail = (props) => {
 							động vật tiến hóa thành yêu thú, làm hại con người,
 							khắp nơi đồn đoán về ngày tận thế. Người thừa kế Lôi
 							quốc, Lôi Chấn có thể lãnh đạo mọi người cùng giải
-							cứu thế giới không đây?
+							cứu thế giới không đây? */}
+							{data.description}
 						</Text>
+
 						<Button
 							title="Đọc truyện"
 							color="#14b"
-							onPress={() => navigation.navigate('ContentManga')}
+							onPress={() =>
+								props.navigation.navigate('ContentManga', {
+									chapter: data.chapters,
+								})
+							}
 						/>
 					</View>
 					<View
