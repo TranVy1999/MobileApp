@@ -13,7 +13,7 @@ export default function Item(props) {
   const { navigation } = props;
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("ContentDiscoverItem")}
+      onPress={() => navigation.navigate("ContentDiscoverItem",{ data: discovers})}
     >
       <ListItem bottomDivider style={styles.containerItem}>
         <ListItem.Content>

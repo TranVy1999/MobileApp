@@ -12,16 +12,14 @@ import {
 import { Image, Tile } from "react-native-elements";
 
 const ContentDiscoverItem = (props) => {
+  const { data } = props.route.params;
   return (
     <View>
       <Text style={styles.itemName}>TIN MANGAR</Text>
       <View>
         <Tile
-          imageSrc={{
-            uri:
-              "https://truyenvn.com/tin/wp-content/uploads/2020/10/truyen-one-piece-1-758x379.jpg",
-          }}
-          title="Onpiece Chuyến thám hiểm mới"
+          imageSrc={{ uri: data.imaged }}
+          title={data.name}
           contentContainerStyle={{ height: 70 }}
         ></Tile>
       </View>
@@ -47,13 +45,7 @@ const ContentDiscoverItem = (props) => {
       <View style={{ backgroundColor: "#ffff" }}>
         <View style={styles.textcontent}>
           <Text style={{ fontSize: 20 }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+          {data.contented}
           </Text>
         </View>
         <ScrollView horizontal={true}>
