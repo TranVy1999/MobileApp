@@ -1,4 +1,6 @@
-import React from "react";
+import React , {useEffect }from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { actionCreators } from '../../../../store/news/news.meta';
 import {
   View,
   ScrollView,
@@ -16,6 +18,19 @@ import Rank from "./DiscoveryItem/Rank";
 const DiscoverTab = (props) => {
   const { navigation } = props;
   const heighPx = Dimensions.get("window").height * 0.33;
+
+
+	const dispatch = useDispatch();
+//2
+	const fetchNews = () => {
+		dispatch(actionCreators.actFetchNews());
+	};
+		//11
+	const news = useSelector((store) => store.news?.news);
+	console.log(news);
+//1
+	useEffect(() => fetchNews(), []);
+
 
   const discovers = [
     {
@@ -72,7 +87,7 @@ const DiscoverTab = (props) => {
     {
       name: "One Piece ",
       avatar_url:
-        "https://i.pinimg.com/564x/2f/27/93/2f279347b6f5cdfe48a8a15d9d456d33.jpg",
+        "https://themepack.me/i/c/749x468/media/g/199/one-piece-theme-bh18.jpg",
       subtitle: "content sub",
       view: 1233,
     },

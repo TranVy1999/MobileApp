@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   stylebtn: {
-    marginTop: 200,
+    marginTop: "50%",
     marginEnd: 10,
     backgroundColor: "#FFF",
   },

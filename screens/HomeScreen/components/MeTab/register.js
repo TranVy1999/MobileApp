@@ -1,8 +1,26 @@
-import React from 'react';
-import { StyleSheet, Text, Alert, View, TouchableOpacity, TextInput, Dimensions ,ImageBackground} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, Alert, View, TouchableOpacity, TextInput, Dimensions, ImageBackground } from 'react-native';
 import { Avatar } from "react-native-elements";
+import { useDispatch } from 'react-redux'
+import {actionCreator} from '../../../../store/user/user.meta'
 
 const Register = (props) => {
+  const dispatch = useDispatch()
+  const { navigation } = props
+  const [username, setUserName] = useState(String)
+  const [usermail, setUserMail] = useState(String)
+  const [password, setPassword] = useState(String)
+  
+  const handleRegister = () => {
+    console.log(username + " user " + password + " pass");
+  
+    dispatch(actionCreator.register({
+      username: username,
+      usermail: usermail,
+      password: password
+    }))
+  }
+	useEffect(() => handleRegister(), []);
 
 
   return (
@@ -20,7 +38,7 @@ const Register = (props) => {
           placeholderTextColor="black"
           underlineColorAndroid="transparent"
           style={styles.txtInput}
-        //    onChangeText={(username) => this.setState({username:username})}
+          onChangeText={(username) => setUserName(username)}
         />
         {/* // input email */}
 
@@ -28,7 +46,7 @@ const Register = (props) => {
           placeholderTextColor="black"
           underlineColorAndroid="transparent"
           style={styles.txtInput}
-        //    onChangeText={(username) => this.setState({username:username})}
+          onChangeText={(usermail) => setPassword(usermail)}
         />
         {/* // input password  */}
         <TextInput placeholder="Password"
@@ -36,7 +54,7 @@ const Register = (props) => {
           placeholderTextColor="black"
           secureTextEntry={true}
           style={styles.txtInput}
-        //  onChangeText={(password) => this.setState({password:password})}
+          onChangeText={(password) => setPassword(password)}
         />
         {/* // input password again */}
         <TextInput placeholder="Password again"
@@ -47,7 +65,7 @@ const Register = (props) => {
         //  onChangeText={(password) => this.setState({password:password})}
         />
 
-        <TouchableOpacity style={styles.btnLogin}>
+        <TouchableOpacity style={styles.btnLogin} onPress={handleRegister}>
           <Text style={styles.txtLogin}>Register</Text>
         </TouchableOpacity>
       </ImageBackground>

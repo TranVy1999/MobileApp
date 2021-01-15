@@ -2,19 +2,20 @@ import { buildRequest } from "../api";
 import qs from "qs";
 
 // user
-export const loginRequest = buildRequest("/user/login", {
+export const loginRequest = (data) => buildRequest("/user/login", {
   method: "POST",
-});
+}).request({data:data });
 
-export const editProfileRequest = buildRequest("/user", {
+export const editProfileRequest =(data) =>  buildRequest("/user", {
   method: "PUT",
-});
+}).request({data: data});
 
-export const registerRequest = buildRequest("/user/register", {
+export const registerRequest = (data) => buildRequest("/user/register", {
   method: "POST",
-});
+}).request({data: data});
 
 // Manga
+      //6
 export const getMangas = (params) => buildRequest("").request();
 // params
 //   ? buildRequest(`/manga?${qs.stringify(params)}`, {
@@ -34,6 +35,10 @@ export const getMangas = (params) => buildRequest("").request();
 //     method: "POST",
 //     data,
 //   });
+
+//discover_news
+export const getNews = (params) => buildRequest("").request();
+
 
 // Category
 export const getCategories = (params) => {

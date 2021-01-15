@@ -17,6 +17,7 @@ import TypesTabs from './components/TypesTabs';
 import CarouselHome from './components/CarouselHome';
 
 const DiscoverTab = lazy(() => import('./components/DiscoverTabs'));
+const BookcaseTab = lazy(() => import('./components/BookcaseTabs'));
 const MeTab = lazy(() => import('./components/MeTab'));
 const MangaDetail = lazy(() => import('../MangaDetail'));
 
@@ -30,14 +31,14 @@ const HomeScreen = (props) => {
 		color: '#ff5454',
 	};
 	const dispatch = useDispatch();
-
+//2
 	const fetchMangas = () => {
 		dispatch(actionCreators.actFetchMangas());
 	};
-
+		//11
 	const mangas = useSelector((store) => store.manga?.mangas);
 	console.log(mangas);
-
+//1
 	useEffect(() => fetchMangas(), []);
 
 	const navigations = [
@@ -70,7 +71,7 @@ const HomeScreen = (props) => {
 			selected: 'bookStoreTab',
 			title: 'Tủ sách',
 			icon: faSwatchbook,
-			// children: <MangaDetail />,
+			 children: <BookcaseTab navigation={navigation} />,
 			onPress: () => setSelectedTab('bookStoreTab'),
 		},
 		{
