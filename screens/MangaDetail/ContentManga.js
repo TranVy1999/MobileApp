@@ -1,15 +1,10 @@
 import React from 'react';
 import {
 	View,
-	Text,
-	Dimensions,
-	TouchableOpacity,
 	StyleSheet,
-	Button,
 	FlatList,
 } from 'react-native';
-import { ListItem, Avatar, Badge } from 'react-native-elements';
-import Manga from '../../assets/manga';
+import { ListItem, Avatar,Image } from 'react-native-elements';
 
 const keyExtractor = (item, index) => index.toString();
 
@@ -17,7 +12,10 @@ const renderItem = ({ item }) => (
 	<ListItem bottomDivider>
 		<ListItem.Content>
 			<ListItem.Title>
-				<img src={item.img} style={{ width: '382px' }}></img>
+				{/* <Avatar source={{ uri: item.img }} size={380} /> */}
+				<Image
+					source={{uri: item.img }} style={{height: 450, width:380}}
+				/>
 			</ListItem.Title>
 		</ListItem.Content>
 	</ListItem>
@@ -40,31 +38,10 @@ const ContentManga = (props) => {
 const styles = StyleSheet.create({
 	content: {
 		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		width: '90%',
-		margin: 10,
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
-	itemName: {
-		fontWeight: '700',
-		color: '#ff6347',
-		margin: 18,
-	},
-	containerInfor: {
-		width: `calc(${Dimensions.get('window').width}px )`,
-		overflow: 'hidden',
-		margin: 10,
-		marginBottom: 5,
-		borderRadius: 4,
-		backgroundColor: '#FFF',
-		shadowColor: '#000',
-		shadowOpacity: 0.3,
-		shadowRadius: 10,
-		shadowOffset: { width: 0, height: 0 },
-	},
-	loginBtn: {
-		width: '90%',
-	},
+
 });
 
 export default ContentManga;

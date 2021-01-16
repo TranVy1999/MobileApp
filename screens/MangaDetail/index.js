@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import { Tabs, WhiteSpace, Grid } from 'antd-mobile';
+import { Image, Tile, Avatar } from "react-native-elements";
 
 const tabs = [{ title: 'Chi Tiết' }, { title: 'Chapters' }];
 
@@ -34,7 +35,10 @@ const MangaDetail = (props) => {
 	return (
 		<View>
 			<View>
-				<img src={data.avatar} style={{ width: '100%' }} alt="" />
+				<Tile imageSrc={{ uri: data.avatar }}
+					contentContainerStyle={{  width: '100%' }}
+				></Tile>
+				{/* <img src={data.avatar} style={{ width: '100%' }} alt="" /> */}
 			</View>
 			<View>
 				<Tabs
@@ -55,15 +59,7 @@ const MangaDetail = (props) => {
 							ellipsizeMode={'clip'}
 							style={{ marginTop: '10px', marginBottom: '10px' }}
 						>
-							{/* Tiến Hóa Thần Chủng Truyện Tranh Trực Tuyến. Truyền
-							thuyết kể rằng, khi tất cả các đất nước nguyên tố
-							xuất hiện rung chuyển và tai họa thì người thừa kế
-							của Lôi quốc mới xuất hiện. Sau một trận động đất
-							toàn bộ đại lục nguyên tố bắt đầu xuất hiện các loài
-							động vật tiến hóa thành yêu thú, làm hại con người,
-							khắp nơi đồn đoán về ngày tận thế. Người thừa kế Lôi
-							quốc, Lôi Chấn có thể lãnh đạo mọi người cùng giải
-							cứu thế giới không đây? */}
+
 							{data.description}
 						</Text>
 
@@ -86,13 +82,13 @@ const MangaDetail = (props) => {
 							backgroundColor: '#fff',
 						}}
 					>
-						Content of second tab
+						<Text > Content of second tab</Text>
 					</View>
 				</Tabs>
 				<WhiteSpace />
 				<View style={{ backgroundColor: 'white' }}>
 					<View className="sub-title" style={styles.contentGird}>
-						<span>Mới cập nhật!</span>
+						<Text>Mới cập nhật!</Text>
 					</View>
 					<Grid
 						data={data1}
@@ -110,9 +106,14 @@ const MangaDetail = (props) => {
 									paddingRight: '-10px',
 								}}
 							>
-								<img
-									src={dataItem.img}
-									style={{ width: '175px', height: '150px' }}
+								<Avatar
+								source={{ uri: dataItem?.img }}
+								style={{
+									width: '175px', height: '150px', borderRadius: 5,
+									shadowColor: "#000",
+									shadowOpacity: 0.2,
+									shadowRadius: 10,
+								}}
 									alt=""
 								/>
 								<View
@@ -123,7 +124,7 @@ const MangaDetail = (props) => {
 										textAlign: 'initial',
 									}}
 								>
-									<span>{dataItem.title}</span>
+									<Text>{dataItem.title}</Text>
 								</View>
 							</View>
 						)}

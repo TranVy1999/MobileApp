@@ -11,7 +11,6 @@ import {
   StyleSheet,
 } from "react-native";
 import { Carousel } from "antd-mobile";
-import "antd-mobile/dist/antd-mobile.css";
 import Item from "./DiscoveryItem/Item";
 import Rank from "./DiscoveryItem/Rank";
 

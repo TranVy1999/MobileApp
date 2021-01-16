@@ -1,19 +1,34 @@
-import React from 'react';
+import React,{ useEffect } from 'react';
 import {
 	View,
 	Dimensions,
 	ScrollView,
 	Image,
+	Text,
 	StyleSheet,
 	TouchableOpacity,
 } from 'react-native';
 import { Carousel, Grid } from 'antd-mobile';
+import { Avatar } from "react-native-elements";
 import 'antd-mobile/dist/antd-mobile.css';
-import Manga from '../../../../assets/manga';
+import { actionCreators } from '../../../../store/manga/manga.meta';
+import { useDispatch, useSelector } from 'react-redux';
 
 const CarouselHome = (props) => {
 	const { navigation } = props;
 	const heighPx = Dimensions.get('window').height * 0.33;
+
+	const dispatch = useDispatch();
+//2
+	const fetchMangas = () => {
+		dispatch(actionCreators.actFetchMangas());
+	};
+		//11
+	const mangas = useSelector((store) => store.manga?.mangas);
+	console.log(mangas);
+//1
+	useEffect(() => fetchMangas(), []);
+
 	const carouselImages = [
 		'http://cn.e.pic.mangatoon.mobi/homepage-banners/452-f491.jpg',
 		'http://cn.e.pic.mangatoon.mobi/homepage-banners/458-a623.jpg',
@@ -71,10 +86,10 @@ const CarouselHome = (props) => {
 				</View>
 
 				<View className="sub-title" style={styles.contentGird}>
-					<span>Mới cập nhật!</span>
+					<Text  style={styles.textTitle}>Mới cập nhật!</Text>
 				</View>
 				<Grid
-					data={Manga}
+					data={mangas}
 					carouselMaxRow={1}
 					columnNum={2}
 					isCarousel
@@ -87,6 +102,7 @@ const CarouselHome = (props) => {
 								height: '200px',
 								paddingLeft: '10px',
 								paddingRight: '-10px',
+
 							}}
 						>
 							<TouchableOpacity
@@ -96,9 +112,14 @@ const CarouselHome = (props) => {
 									})
 								}
 							>
-								<img
-									src={dataItem?.avatar}
-									style={{ width: '175px', height: '150px' }}
+								<Avatar
+									source={{ uri: dataItem?.avatar }}
+									style={{
+										width: '175px', height: '150px', borderRadius: 5,
+										shadowColor: "#000",
+										shadowOpacity: 0.2,
+										shadowRadius: 10,
+									}}
 									alt=""
 								/>
 								<View
@@ -109,7 +130,7 @@ const CarouselHome = (props) => {
 										textAlign: 'initial',
 									}}
 								>
-									<span>{dataItem?.name}</span>
+									<Text style={styles.text}>{dataItem?.name}</Text>
 								</View>
 							</TouchableOpacity>
 						</View>
@@ -117,10 +138,10 @@ const CarouselHome = (props) => {
 				/>
 
 				<View className="sub-title" style={styles.contentGird}>
-					<span> Đề Xuất!</span>
+					<Text  style={styles.textTitle}> Đề Xuất!</Text>
 				</View>
 				<Grid
-					data={Manga}
+					data={mangas}
 					carouselMaxRow={2}
 					columnNum={2}
 					// isCarousel
@@ -141,9 +162,14 @@ const CarouselHome = (props) => {
 									})
 								}
 							>
-								<img
-									src={dataItem?.avatar}
-									style={{ width: '175px', height: '150px' }}
+								<Avatar
+									source={{ uri: dataItem?.avatar }}
+									style={{
+										width: '175px', height: '150px', borderRadius: 5,
+										shadowColor: "#000",
+										shadowOpacity: 0.2,
+										shadowRadius: 10,
+									}}
 									alt=""
 								/>
 								<View
@@ -154,7 +180,7 @@ const CarouselHome = (props) => {
 										textAlign: 'initial',
 									}}
 								>
-									<span>{dataItem?.name}</span>
+									<Text style={styles.text}>{dataItem?.name}</Text>
 								</View>
 							</TouchableOpacity>
 						</View>
@@ -162,10 +188,10 @@ const CarouselHome = (props) => {
 				/>
 
 				<View className="sub-title" style={styles.contentGird}>
-					<span>Truyện Mới!</span>
+					<Text  style={styles.textTitle}>Truyện Mới!</Text>
 				</View>
 				<Grid
-					data={Manga}
+					data={mangas}
 					carouselMaxRow={1}
 					columnNum={2}
 					isCarousel
@@ -187,9 +213,12 @@ const CarouselHome = (props) => {
 									});
 								}}
 							>
-								<img
-									src={dataItem?.avatar}
-									style={{ width: '175px', height: '150px' }}
+								<Avatar
+									source={{ uri: dataItem?.avatar }}
+									style={{ width: '175px', height: '150px' ,borderRadius: 5,
+									shadowColor: "#000",
+									shadowOpacity: 0.2,
+									shadowRadius: 10,}}
 									alt=""
 								/>
 								<View
@@ -200,22 +229,27 @@ const CarouselHome = (props) => {
 										textAlign: 'initial',
 									}}
 								>
-									<span>{dataItem?.name}</span>
+									<Text style={styles.text}>{dataItem?.name}</Text>
 								</View>
 							</TouchableOpacity>
 						</View>
 					)}
 				/>
 				<View className="sub-title" style={styles.contentGird}>
-					<span>Viễn Tưởng</span>
+					<Text style={styles.textTitle}>Viễn Tưởng</Text>
 				</View>
 				<Grid
-					data={Manga}
+					data={mangas}
 					carouselMaxRow={2}
 					columnNum={2}
 					hasLine={false}
 					renderItem={(dataItem) => (
-						<View key={dataItem?.id}>
+						<View style={{
+							height: '200px',
+							paddingLeft: '10px',
+							paddingRight: '-10px',
+						}}
+							key={dataItem?.id}>
 							<TouchableOpacity
 								onPress={() => {
 									props.navigation.navigate('MangaDetail', {
@@ -223,9 +257,14 @@ const CarouselHome = (props) => {
 									});
 								}}
 							>
-								<img
-									src={dataItem?.avatar}
-									style={{ width: '200px', height: '150px' }}
+								<Avatar
+									source={{ uri: dataItem?.avatar }}
+									style={{
+										width: '175px', height: '150px', borderRadius: 5,
+										shadowColor: "#000",
+										shadowOpacity: 0.2,
+										shadowRadius: 10,
+									}}
 									alt=""
 								/>
 								<View
@@ -236,7 +275,7 @@ const CarouselHome = (props) => {
 										textAlign: 'initial',
 									}}
 								>
-									<span>{dataItem?.name}</span>
+									<Text style={styles.text}>{dataItem?.name}</Text>
 								</View>
 							</TouchableOpacity>
 						</View>
@@ -253,5 +292,13 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		height: '30px',
 	},
+	text:{
+		fontWeight: 'bold',
+	},
+	textTitle:{
+		fontWeight: 'bold',
+		fontSize:20,
+		color: "red",
+	}
 });
 export default CarouselHome;

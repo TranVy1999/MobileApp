@@ -3,6 +3,7 @@ import { Tabs } from "antd-mobile";
 import { View, ScrollView, Text, FlatList } from "react-native";
 import LovelyItem from "./LovelyItem";
 import HistoryItem from "./HistoryItem";
+import loveManga from '../../../../assets/manga';
 
 const BookcaseTabs = (props) => {
   const { navigation } = props;
@@ -11,6 +12,9 @@ const BookcaseTabs = (props) => {
     { title: "Yêu thích", sub: "1" },
     { title: "Lich sử", sub: "2" },
   ];
+
+
+
 
   const lovely = [
     {
@@ -106,7 +110,7 @@ const BookcaseTabs = (props) => {
       >
         <View style={{ height: "100%" }}>
           <FlatList
-            data={lovely}
+            data={loveManga}
             renderItem={({ item }) => (
               <LovelyItem lovely={item} navigation={navigation} />
             )}

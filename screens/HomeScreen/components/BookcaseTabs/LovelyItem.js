@@ -7,12 +7,16 @@ import {
   Dimensions,
 } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
+
+
 export default function LovelyItem(props) {
   const { lovely } = props;
   const { navigation } = props;
+
+
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("ContentDiscoverItem",{ data: discovers})}
+      onPress={() => navigation.navigate("MangaDetail",{ data: lovely})}
     >
       <ListItem bottomDivider style={styles.containerItem}>
         <ListItem.Content>
@@ -26,7 +30,7 @@ export default function LovelyItem(props) {
             <View>
               <Avatar
                 style={styles.itemImage}
-                source={{ uri: lovely.imaged }}
+                source={{ uri: lovely.avatar }}
               />
             </View>
             <View style={styles.itemContent}>
@@ -36,9 +40,9 @@ export default function LovelyItem(props) {
               <ListItem.Subtitle>
                 <View style={styles.itemSubtitle}>
                   <Text style={styles.contented}>
-                    {lovely.contented.length > 70
-                      ? lovely.contented.substring(0, 70 - 3) + "..."
-                      : lovely.contented}
+                    {lovely.description.length > 70
+                      ? lovely.description.substring(0, 70 - 3) + "..."
+                      : lovely.description}
                   </Text>
                 </View>
               </ListItem.Subtitle>
