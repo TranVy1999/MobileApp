@@ -29,7 +29,7 @@ const MangaItem = (props) => {
 						<View>
 							<Avatar
 								style={styles.itemImage}
-								source={{ uri: manga.image }}
+								source={{ uri: manga.avartar }}
 							/>
 						</View>
 						<View style={styles.itemContent}>

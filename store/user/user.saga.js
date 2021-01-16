@@ -26,8 +26,8 @@ const showAlert = (
 
 function* login(action) {
   try {
-    const { body } = yield call(loginRequest.request, {
-      data: action.payload,
+    const { body } = yield call(loginRequest, {
+     ...action.payload,
     });
     const { user, token } = body;
     if (token) {
@@ -35,6 +35,7 @@ function* login(action) {
       yield put(actionCreator.loginSuccess(user));
       showAlert("Đăng nhập thành công!", "", [], 1000);
       setTimeout(() => {
+        Router.push('/home', params={user})
         // chuyển hướng sang home
       }, 1000);
     } else {
@@ -69,23 +70,26 @@ function* editProfile(action) {
 
 function* register(action) {
   try {
-    const { body } = yield call(registerRequest.request, {
+    const { body, httpStatus } = yield call(registerRequest.request, {
       data: action.payload,
     });
-    const { user, token } = body;
-    localStorage.setItem("utk", token);
-    yield put(actionCreator.loginSuccess(user));
-    showAlert("Đăng ký tài khoản thành công!", "", [], 1800);
-    setTimeout(() => {
-      //   Router.push("/home") => chuyển qua home
-    }, 1800);
-  } catch (error) {
-    if (error.response && error.response.status === 409) {
-      return showAlert(
-        "Email đã tồn tại!",
-        "Xin hãy thử lại với một email khác",
-        [],
-        2000
+    if(httpStatus === 200){
+
+      const { user, token } = body;
+      localStorage.setItem("utk", token);
+      yield put(actionCreator.loginSuccess(user));
+      showAlert("Đăng ký tài khoản thành công!", "", [], 1800);
+      setTimeout(() => {
+        Router.push("/home", param={user}) 
+      }, 1800);
+    }
+    } catch (error) {
+      if (error.response && error.response.status === 409) {
+        return showAlert(
+          "Email đã tồn tại!",
+          "Xin hãy thử lại với một email khác",
+          [],
+          2000
       );
     }
     showAlert(`${errMessage}`, "", [], 2000);

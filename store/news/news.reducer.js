@@ -1,14 +1,14 @@
-import { types } from "./manga.meta";
+import { types } from "./news.meta";
 import { handleActions } from "redux-actions";
 
-const defaultMangaState = {
-  mangas: [],
+const defaultNewsState = {
+  news: [],
   //   byId: {},
 };
   //10
-const getMangasSuccess = (state, action) => ({
+const getNewsSuccess = (state, action) => ({
   ...state,
-  mangas: action.payload,
+  news: action.payload,
 });
 
 // const getMangaByIdSuccess = (state, action) => ({
@@ -18,8 +18,8 @@ const getMangasSuccess = (state, action) => ({
 
 export default handleActions(
   {   //9
-    [types.FETCH_MANGA_SUCCESS]: getMangasSuccess,
+    [types.FETCH_NEWS_SUCCESS]: getNewsSuccess,
     // [types.FETCH_MANGA_BY_ID_SUCCESS]: getMangaByIdSuccess,
   },
-  defaultMangaState
+  defaultNewsState
 );

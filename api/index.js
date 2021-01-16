@@ -1,7 +1,7 @@
 import axios from "axios";
 require("dotenv").config();
 // const BASE_URL = process.env.REACT_APP_BACKEND_URL
-const BASE_URL = `http://demo6446725.mockable.io/listmanga/manga?fbclid=IwAR2k78EALv3vBagvFX7TyGz8Fk4BuCbdPZaZ-b4zaWDXnw9L4ZjXWW3lpw8`;
+const BASE_URL = `http://demo6446725.mockable.io/manga1nui?fbclid=IwAR2hbWbtVhaWozfSvBotC8Gnc81nUce7XPSA4INR4UdiI6GA-7rsBFCV6iA`;
 const baseHeader = {
   "Content-Type": "application/json",
 };

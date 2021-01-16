@@ -1,10 +1,27 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux'
 import { StyleSheet, Text,Alert, View,TouchableOpacity,TextInput,Dimensions ,ImageBackground} from 'react-native';
 import {  Avatar  } from "react-native-elements";
+
+import {actionCreator} from '../../../../store/user/user.meta'
   
   const Login = (props) => {
-  const {navigation} = props
+    const dispatch = useDispatch()
+    const {navigation} = props
+    const [username, setUserName] = useState(String) 
+    const [password, setPassword] = useState(String) 
 
+    const handleLogin =  () => {
+      console.log(username + " user " + password + " pass" );
+       dispatch(actionCreator.login({
+        username: username,
+        password: password
+      }))
+    }
+    const user = useSelector((store) => store.user?.user);
+    
+    useEffect(() => handleLogin(), []);
+    
     return (
       <View  >
           <ImageBackground  style={styles.container}  source={{ uri: 'https://i.pinimg.com/originals/44/8d/41/448d41e3df798cd669787b4fbd2733ea.jpg'}}>
@@ -20,16 +37,16 @@ import {  Avatar  } from "react-native-elements";
                   placeholderTextColor="black"
                   underlineColorAndroid="transparent"
                   style={styles.txtInput}  
-                  //    onChangeText={(username) => this.setState({username:username})}
+                     onChangeText={(username) => setUserName(username)}
                   />
                   <TextInput placeholder="Password"
                     underlineColorAndroid="transparent"
                     placeholderTextColor="black"
                     secureTextEntry={true}
                     style={styles.txtInput} 
-                    //  onChangeText={(password) => this.setState({password:password})}
+                     onChangeText={(password) => setPassword(password)}
                     />
-                  <TouchableOpacity  style={styles.btnLogin}>
+                  <TouchableOpacity  style={styles.btnLogin} onPress={handleLogin}> 
                     <Text style={styles.txtLogin}>Login</Text>
                   </TouchableOpacity>
                   <TouchableOpacity>
