@@ -1,5 +1,5 @@
 import React, { useState, lazy, useEffect } from 'react';
-import { TabBar } from 'antd-mobile';
+import { TabBar } from '@ant-design/react-native';
 import { View, Dimensions } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,7 +12,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { actionCreators } from '../../store/manga/manga.meta';
-import 'antd-mobile/dist/antd-mobile.css';
 import TypesTabs from './components/TypesTabs';
 import CarouselHome from './components/CarouselHome';
 

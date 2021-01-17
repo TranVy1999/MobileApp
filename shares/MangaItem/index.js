@@ -8,7 +8,7 @@ import {
 	Button,
 } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
-import 'antd-mobile/dist/antd-mobile.css';
+
 
 const MangaItem = (props) => {
 	const { manga } = props;

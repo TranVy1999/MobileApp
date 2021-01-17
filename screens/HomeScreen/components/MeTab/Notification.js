@@ -7,7 +7,6 @@ import {
   StyleSheet,
  
 } from "react-native";
-import "antd-mobile/dist/antd-mobile.css";
 import { ListItem, Avatar ,Badge } from "react-native-elements";
 
 const Notification = (props) => {
