@@ -1,5 +1,5 @@
 import React from "react";
-import { Tabs } from "antd-mobile";
+import { Tabs } from "@ant-design/react-native";
 import { View, ScrollView, Text } from "react-native";
 import MangaItem from "../../../../shares/MangaItem";
 import mangas from "../../../../manga";

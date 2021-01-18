@@ -13,7 +13,9 @@ export default function Item(props) {
   const { navigation } = props;
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("ContentDiscoverItem",{ data: discovers})}
+      onPress={() =>
+        navigation.navigate("ContentDiscoverItem", { data: discovers })
+      }
     >
       <ListItem bottomDivider style={styles.containerItem}>
         <ListItem.Content>
@@ -64,15 +66,15 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
   },
   contented: {
-    width: `calc(${Dimensions.get("window").width}px - 162px)`,
+    width: Dimensions.get("window").width - 162,
   },
   itemContent: {
-    width: `calc(${Dimensions.get("window").width}px - 162px)`,
+    width: Dimensions.get("window").width - 162,
     paddingLeft: 10,
     paddingRight: 10,
   },
   containerItem: {
-    width: `calc(${Dimensions.get("window").width}px - 20px)`,
+    width: Dimensions.get("window").width - 20,
     overflow: "hidden",
     margin: 10,
     marginBottom: 5,

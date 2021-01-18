@@ -29,10 +29,9 @@ const Spinner = () => {
           padding: 5,
           width: 60,
           height: 60,
-          display: "block",
           transform: [{ rotate: rotation }],
           border: "5px solid #eeee",
-          borderRadius: "50%",
+          borderRadius: 1 / 2,
           borderTop: "5px solid #ff5454",
         }}
       >
@@ -44,10 +43,9 @@ const Spinner = () => {
             padding: 5,
             width: "100%",
             height: "100%",
-            display: "block",
             transform: [{ rotate: rotation }],
             border: "5px solid #eeee",
-            borderRadius: "50%",
+            borderRadius: 1 / 2,
             borderBottom: "5px solid #ff5454",
           }}
         ></Animated.View>
@@ -58,14 +56,13 @@ const Spinner = () => {
 
 const styles = StyleSheet.create({
   spinner: {
-    zIndex: "1000",
     maxWidth: Dimensions.get("window").width,
-    minHeight: `calc(${Dimensions.get("window").height}px - 50px)`,
+    minHeight: Dimensions.get("window").height - 50,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
-    background: "#000",
+    backgroundColor: "#000",
   },
 });
 

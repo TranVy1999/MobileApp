@@ -8,8 +8,7 @@ import {
   Image,
   StyleSheet,
 } from "react-native";
-import { Carousel } from "antd-mobile";
-import "antd-mobile/dist/antd-mobile.css";
+import { Carousel } from "@ant-design/react-native";
 import Item from "./DiscoveryItem/Item";
 import Rank from "./DiscoveryItem/Rank";
 
